@@ -1,14 +1,15 @@
 {
   "name": "@jhenbert/viewport-action",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "exports": "./mod.ts",
-  "include": ["mod.ts", "README.md", "LICENSE"],
+  "include": ["mod.ts", "README.md"],
   "exclude": [
     ".github",
     "node_modules",
     "package-lock.json",
     "package.json",
     "tsconfig.json",
-    ".gitignore"
+    ".gitignore",
+    "LICENSE"
   ]
 }
