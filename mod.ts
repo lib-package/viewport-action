@@ -13,12 +13,16 @@
  * observer.destroy();
  */
 const viewport = (element: Element): object => {
-  const observer: IntersectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const eventName = entry.isIntersecting ? "enterViewport" : "exitViewport";
-      entry.target.dispatchEvent(new CustomEvent(eventName));
-    });
-  });
+  const observer: IntersectionObserver = new IntersectionObserver(
+    (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry: IntersectionObserverEntry) => {
+        const eventName = entry.isIntersecting
+          ? "enterViewport"
+          : "exitViewport";
+        entry.target.dispatchEvent(new CustomEvent(eventName));
+      });
+    }
+  );
 
   observer.observe(element);
 
