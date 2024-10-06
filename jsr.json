@@ -2,6 +2,13 @@
   "name": "@jhenbert/viewport-action",
   "version": "0.1.0",
   "exports": "./mod.ts",
-  "include": ["mod.ts", "README.md", "tsconfig.json", "LICENSE"],
-  "exclude": [".github"]
+  "include": ["mod.ts", "README.md", "LICENSE"],
+  "exclude": [
+    ".github",
+    "node_modules",
+    "package-lock.json",
+    "package.json",
+    "tsconfig.json",
+    ".gitignore"
+  ]
 }

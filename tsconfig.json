@@ -4,7 +4,10 @@
     "module": "commonjs",
     "lib": ["DOM", "ES6"], // Ensure 'DOM' is included here
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true // Optional: skips type checking of declaration files
     // other options...
-  }
+  },
+  "include": ["./mod.ts"], // Adjust based on your project structure
+  "exclude": ["node_modules"]
 }
