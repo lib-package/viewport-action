@@ -1,0 +1,7 @@
+{
+  "name": "@jhenbert/viewport-action",
+  "version": "0.1.0",
+  "exports": "./mod.ts",
+  "include": ["mod.ts", "README.md"],
+  "exclude": ["LICENSE", ".github"]
+}
