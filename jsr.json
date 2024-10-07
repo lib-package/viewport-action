@@ -1,8 +1,8 @@
 {
   "name": "@jhenbert/viewport-action",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "exports": "./mod.ts",
-  "include": ["mod.ts", "README.md"],
+  "include": ["mod.ts", "README.md", "/@types/*"],
   "exclude": [
     ".github",
     "node_modules",

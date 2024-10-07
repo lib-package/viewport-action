@@ -8,6 +8,6 @@
     "skipLibCheck": true // Optional: skips type checking of declaration files
     // other options...
   },
-  "include": ["./mod.ts"], // Adjust based on your project structure
+  "include": ["./mod.ts", "/@types/*"], // Adjust based on your project structure
   "exclude": ["node_modules"]
 }
