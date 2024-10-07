@@ -21,7 +21,7 @@ npx jsr add @jhenbert/viewport-action
 
 ## Usage
 
-To use the library, simply import it into your project and call the viewport function, passing in the DOM element you want to observe.
+To use the library, simply import it into your project and call the viewport function, passing in the DOM element you want to observe and the threshold to be triggered.
 
 ```javascript
 import viewport from "@jhenbert/viewport-action";
@@ -30,21 +30,55 @@ import viewport from "@jhenbert/viewport-action";
 const element = document.querySelector("#myElement");
 
 // Start observing the element
-const observer = viewport(element);
+const observer = viewport(element, 100);
 
 // To stop observing the element later
 observer.destroy();
 ```
 
+If you are using a framework such as Svelte, this will be your LazyComponent. Refer to Svelte documentation for more comprehensive tutorial for lazy loading.
+
+```svelte
+<script lang="ts">
+  import viewport from "@jhenbert/viewport-action";
+
+  let loadComponent;
+  export { loadComponent as this };
+
+  export let threshold: number = 0;
+
+  let isShowingComponent = false;
+  let componentPromise: Promise<{
+    default: ConstructorOfATypedSvelteComponent;
+  }>;
+
+  const handleEnterViewport = () => {
+    componentPromise = loadComponent();
+    isShowingComponent = true;
+  };
+</script>
+
+{#if !isShowingComponent}
+  <div use:viewport={threshold} on:enterViewport={handleEnterViewport} />
+{:else}
+  {#await componentPromise}
+    <slot name="fallback">Loading...</slot>
+  {:then { default: Component }}
+    <slot name="component" {Component} />
+  {/await}
+{/if}
+```
+
 ## API
 
 ```bash
-viewport(element: Element)
+viewport(element: Element, 100)
 ```
 
 ### Parameters
 
 - `element` (Element): The DOM element to observe for visibility changes.
+- `threshold`: Number of pixels to be triggered.
 
 ### Returns
 
@@ -92,7 +126,7 @@ const lazyImages = document.querySelectorAll(".lazy-image");
 
 // Observe each lazy image
 lazyImages.forEach((img) => {
-  const observer = viewport(img);
+  const observer = viewport(img, 100);
 
   img.addEventListener("enterViewport", () => {
     loadImage(img);
