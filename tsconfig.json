@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "typeRoots": ["./node_modules/@types", "./@types"],
     "target": "ES6",
     "module": "commonjs",
     "lib": ["DOM", "ES6"], // Ensure 'DOM' is included here
