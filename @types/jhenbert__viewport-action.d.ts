@@ -12,3 +12,5 @@ declare module "svelte/elements" {
     "on:exitViewport"?: (event: CustomEvent<void>) => void;
   }
 }
+
+export {}
